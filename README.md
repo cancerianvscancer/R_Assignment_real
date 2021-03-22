@@ -8,10 +8,10 @@ I am trying to run the distribution plot to see if I how the graph looks with my
 I used tidy, pivot to clean the data as suggested by Dr. Lavrov, then use if else to select homozygous and heterozygous. Let me know if it runs with your code or
 if you have questions. I used the merged file (fang + SNP) to make the graphs. 
 
-# tidy_fang <- fang %>% select(-JG_OTU) %>% 
+ tidy_fang <- fang %>% select(-JG_OTU) %>% 
   pivot_longer( -Sample_ID:-Group, names_to = "SNP_ID", values_to = "Sequence")
 
-# tidy_fang <- tidy_fang %>% 
+ tidy_fang <- tidy_fang %>% 
   mutate(new_sequence = ifelse(Sequence %in% c("A/A","T/T","C/C","G/G"), "Homozygous", 
   ifelse(Sequence == "?/?", "Missing","Heterozygous")))
   
